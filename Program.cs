@@ -67,7 +67,9 @@ builder.Services.AddScoped<IContactRepository, EfContactRepository>();//her iste
 
 
 builder.Services.AddScoped<IAuthService, AuthManager>();
-var apiBaseUrl = builder.Configuration["ApiBaseUrl"];
+builder.Services.AddScoped<IRoleService, RoleManagerService>();
+var apiBaseUrl = builder.Configuration["ApiBaseUrl"];    
+
 builder.Services.AddHttpClient<INewsService, NewsService>(client =>
 {
     client.BaseAddress = new Uri(apiBaseUrl);//Inewservice çağrıldığında newsservice otomatik olarak dönerken client ifadesi için base url i doğrudan çözümlüyor
