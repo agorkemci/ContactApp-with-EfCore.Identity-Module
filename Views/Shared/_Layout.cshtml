@@ -36,6 +36,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="News" asp-action="Index">All News</a>
                         </li>
+                        @if(User.IsInRole("Admin")){
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Roles" asp-action="Index">Configure Roles</a>
+                            </li>
+                        }
                     </ul>
                     <ul class="navbar-nav">
                         @if(signInManager.IsSignedIn(User))
