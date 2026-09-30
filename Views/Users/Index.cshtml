@@ -1,0 +1,57 @@
+﻿@using ContactApp.Models.Identity
+@model IEnumerable<ApplicationUser>
+@{
+    ViewData["Title"] = "Users";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm border-0">
+        <!-- Header & Action Button -->
+        <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center border-bottom">
+            <h4 class="m-0 text-dark fw-bold">Users</h4>
+            <a class="btn btn-success btn-sm px-3" asp-action="Create">
+                + Create New User
+            </a>
+        </div>
+
+        <!-- Table -->
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th class="ps-4">Username</th>
+                            <th>Email</th>
+                            <th class="text-end pe-4" style="width: 120px;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            @foreach (ApplicationUser user in Model)
+                            {
+                                <tr>
+                                    <td class="ps-4 fw-medium">@user.UserName</td>
+                                    <td class="text-secondary">@user.Email</td>
+                                    <td class="text-end pe-4">
+                                        <a class="btn btn-outline-warning btn-sm" asp-action="Update" asp-route-id="@user.Id">
+                                            Update
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="3" class="text-center text-muted py-4">
+                                    No users found.
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

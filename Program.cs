@@ -68,6 +68,7 @@ builder.Services.AddScoped<IContactRepository, EfContactRepository>();//her iste
 
 builder.Services.AddScoped<IAuthService, AuthManager>();
 builder.Services.AddScoped<IRoleService, RoleManagerService>();
+builder.Services.AddScoped<IUserService, UserManagerService>();
 var apiBaseUrl = builder.Configuration["ApiBaseUrl"];    
 
 builder.Services.AddHttpClient<INewsService, NewsService>(client =>
